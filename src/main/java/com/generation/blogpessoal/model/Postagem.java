@@ -32,6 +32,8 @@ public class Postagem {
 	@NotNull
 	public String texto;
 
+	
+	
 	public Long getId() {
 		return id;
 	}
