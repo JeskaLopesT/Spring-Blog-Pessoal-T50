@@ -15,25 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.blogpessoal.model.Postagem;
-import com.generation.blogpessoal.repository.PostagemRepository;
+import com.generation.blogpessoal.model.Tema;
+import com.generation.blogpessoal.repository.TemaRepository;
 
 @RestController
-@RequestMapping("/postagens")
-@CrossOrigin(origins="*")
-public class PostagemController {
-	
-	// tranfere a responsabilidade de contruir as consultas no banco de dados para o repository
+@RequestMapping("/tema")
+@CrossOrigin("*")
+public class TemaController {
+
+	// tranfere a responsabilidade de contruir as consultas no banco de dados para o
+	// repository
 	@Autowired
-	private PostagemRepository repository;
+	private TemaRepository repository;
 
 	@GetMapping
-	public List<Postagem> getAll() {
+	public List<Tema> getAll() {
 		return repository.findAll();
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Postagem> postPostagem (@Valid @RequestBody Postagem postagem){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
+	public ResponseEntity<Tema> postTema(@Valid @RequestBody Tema tema) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
 	}
-	
 }
